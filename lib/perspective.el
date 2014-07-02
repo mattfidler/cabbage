@@ -27,15 +27,4 @@ Has no effect when `persp-show-modestring' is nil."
           (append '("[")
                   (persp-intersperse (mapcar 'persp-format-name (persp-names)) "")
                   '("]")))))
-
-(defun cabbage-perspective-bindings ()
-  (when (cabbage-bundle-active-p 'ergonomic)
-    (global-set-key (kbd "C-p s") 'persp-switch)
-    (global-set-key (kbd "C-p p") 'cabbage-persp-last)
-    (global-set-key (kbd "C-p d") 'persp-kill)
-    (global-set-key (kbd "C-p x") 'persp-kill)
-    (global-set-key (kbd "C-p m") 'cabbage-persp-main)))
-
-(add-hook 'cabbage-initialized-hook 'cabbage-perspective-bindings)
-
 (persp-mode)

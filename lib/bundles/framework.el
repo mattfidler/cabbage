@@ -1,4 +1,3 @@
-(defvar cabbage--globaly-bound-keys-alist '())
 (defvar cabbage--deprecated-bundles '())
 (defvar cabbage--protect-binding-modes '(tar-mode))
 
@@ -7,26 +6,6 @@
 
 (defun cabbage-flymake-active-p ()
   cabbage-use-flymake)
-
-(defun cabbage-global-set-key (binding func)
-  (add-to-list 'cabbage--globaly-bound-keys-alist (cons binding func))
-  (global-set-key binding func))
-
-(defun cabbage-clear-local-bindings ()
-  (interactive)
-  (unless (member major-mode cabbage--protect-binding-modes)
-    (dolist (binding cabbage--globaly-bound-keys-alist)
-      (local-unset-key (car binding)))))
-
-(add-hook 'after-change-major-mode-hook 'cabbage-clear-local-bindings)
-(add-hook 'org-mode-hook 'cabbage-clear-local-bindings)
-(add-hook 'org-agenda-mode-hook 'cabbage-clear-local-bindings)
-(add-hook 'comint-mode-hook 'cabbage-clear-local-bindings)
-(add-hook 'inf-ruby-mode-hook 'cabbage-clear-local-bindings)
-(add-hook 'erlang-mode-hook 'cabbage-clear-local-bindings)
-(add-hook 'diff-mode 'cabbage-clear-local-bindings)
-(add-hook 'magit-mode 'cabbage-clear-local-bindings)
-(add-hook 'html-mode-hook 'cabbage-clear-local-bindings)
 
 (defun cabbage-lisp-buffer-p ()
   (memql major-mode '(emacs-lisp-mode lisp-mode lisp-interaction-mode)))

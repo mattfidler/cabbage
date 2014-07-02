@@ -129,3 +129,6 @@
 [submodule "vendor/rbenv"]
 	path = vendor/rbenv
 	url = https://github.com/senny/rbenv.el.git
+[submodule "vendor/ergoemacs-mode"]
+	path = vendor/ergoemacs-mode
+	url = https://github.com/ergoemacs/ergoemacs-mode.git
